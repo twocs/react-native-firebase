@@ -5,7 +5,7 @@ module.exports = {
   timeout: 1000000,
   reporter: 'spec',
   slow: 2000,
-  retries: 4,
+  retries: 0,
   bail: true,
   exit: true,
   require: 'node_modules/jet/platform/node',

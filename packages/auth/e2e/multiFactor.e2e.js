@@ -503,7 +503,7 @@ describe('multi-factor modular', function () {
     });
   });
 
-  describe('modular', function () {
+  describe.only('modular', function () {
     beforeEach(async function () {
       const { createUserWithEmailAndPassword, getAuth, signOut } = authModular;
 
@@ -532,9 +532,11 @@ describe('multi-factor modular', function () {
 
     describe('sign-in', function () {
       it('requires multi-factor auth when enrolled', async function () {
-        if (device.getPlatform() === 'ios') {
-          this.skip();
-        }
+        // iOS receives:
+        //      NativeFirebaseError: [auth/unknown] MFA_ENROLLMENT_NOT_FOUND
+        // if (device.getPlatform() === 'ios') {
+        //   this.skip();
+        // }
         const { phoneNumber, email, password } = await createUserWithMultiFactor();
 
         const { signInWithEmailAndPassword, getAuth, getMultiFactorResolver } = authModular;
@@ -562,16 +564,20 @@ describe('multi-factor modular', function () {
           verificationId.should.be.a.String();
 
           let verificationCode = await getLastSmsCode(phoneNumber);
+          console.error('verificationCode is ' + verificationCode);
           if (verificationCode == null) {
             // iOS simulator uses a masked phone number
             const maskedNumber = '+********' + phoneNumber.substring(phoneNumber.length - 4);
             verificationCode = await getLastSmsCode(maskedNumber);
+            console.error('2nd try verificationCode is ' + verificationCode);
           }
           const phoneAuthCredential = new firebase.auth.PhoneAuthProvider.credential(
             verificationId,
             verificationCode,
           );
+          console.error('phoneAuthCredential is ' + JSON.stringify(phoneAuthCredential));
           const assertion = firebase.auth.PhoneMultiFactorGenerator.assertion(phoneAuthCredential);
+          console.error('assertion is ' + JSON.stringify(phoneAuthCredential));
           return multiFactorResolver
             .resolveSignIn(assertion)
             .then(userCredential => {

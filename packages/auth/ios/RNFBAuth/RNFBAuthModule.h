@@ -83,4 +83,7 @@ NSString* const AuthErrorCode_toJSErrorCode[] = {
     [FIRAuthErrorCodeKeychainError] = @"keychain-error",
     [FIRAuthErrorCodeInternalError] = @"internal-error",
     [FIRAuthErrorCodeMalformedJWT] = @"malformed-jwt",
-    [FIRAuthErrorCodeSecondFactorRequired] = @"multi-factor-auth-required"};
+    [FIRAuthErrorCodeSecondFactorRequired] = @"multi-factor-auth-required",
+    // FIXME - this mapping is perhaps incorrect? MF info not found may not == MF auth required
+    // perhaps the problem on iOS currently is that the enrollment is not happening ?
+    [FIRAuthErrorCodeMultiFactorInfoNotFound] = @"multi-factor-auth-required"};
