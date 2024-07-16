@@ -5,9 +5,13 @@ next: /migrating-to-v6
 previous: /typescript
 ---
 
-Starting from version `10.0.0`, React Native Firebase packages share a single common version, with aggregated release notes available:
+The most recent release of React Native Firebase is the npm version:
 
-![hide:badge](https://img.shields.io/npm/v/@react-native-firebase/app.svg?style=for-the-badge&logo=npm) [View Release Notes &raquo;](https://github.com/invertase/react-native-firebase/tree/main/CHANGELOG.md)
+![hide:badge](https://img.shields.io/npm/v/@react-native-firebase/app.svg?style=for-the-badge&logo=npm)
+
+Starting from version `10.0.0`, React Native Firebase packages share a single common version, with aggregated release notes available: 
+
+[View Release Notes &raquo;](https://github.com/invertase/react-native-firebase/tree/main/CHANGELOG.md)
 
 ---
 
