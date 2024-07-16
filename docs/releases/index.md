@@ -1,8 +1,8 @@
 ---
 title: Release notes
 description: View the latest release notes for React Native Firebase
-next: /migrating-to-v6
-previous: /typescript
+next: /faqs-and-tips
+previous: /platform
 ---
 
 The most recent release of React Native Firebase is the npm version:
